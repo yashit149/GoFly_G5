@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>GoFly - Your Flight Companion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Reset & Base */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* Lighter, more modern gradient */
+            color: #333; /* Darker, more readable text */
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease-in-out;
+        }
+        a:hover {
+            color: #007bff; /* A more vibrant hover color */
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px); /* Nice frosted glass effect */
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: default;
+            user-select: none;
+            color: #007bff; /* Modern blue logo color */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .logo span {
+            color: #6c757d; /* A softer accent color */
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+        nav ul li a {
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+        nav ul li a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4); /* Slightly lighter overlay */
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            color: #fff;
+            animation: fadeInUp 1s ease forwards;
+        }
+        .hero-content h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+            line-height: 1.8;
+        }
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: 600;
+            padding: 14px 35px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+            transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: inline-block;
+            cursor: pointer;
+            user-select: none;
+            font-size: 1.1rem;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+            box-shadow: 0 8px 20px rgba(0, 86, 179, 0.5);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #f9f9f9; /* Light gray background */
+        }
+        .features h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 40px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .feature-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease-in-out;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+        .feature-item h3 {
+            font-size: 1.8rem;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        .feature-item p {
+            color: #6c757d;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Planner Section */
+        .planner {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #e9ecef; /* Another light background */
+        }
+        .planner h2 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .planner p {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 15px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+        .form input[type="text"] {
+            padding: 12px 18px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 1rem;
+            flex-grow: 1;
+            min-width: 200px;
+        }
+        .form button {
+            background-color: #28a745; /* Green button for action */
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .form button:hover {
+            background-color: #1e7e34;
+        }
+        .results {
+            margin-top: 30px;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        /* Flight Info Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .flight-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            padding: 30px;
+            width: 100%;
+            transition: transform 0.2s ease-in-out;
+        }
+        .flight-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .flight-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .flight-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 15px;
+            column-gap: 20px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .flight-details strong {
+            display: block;
+            color: #222;
+            font-weight: 600;
+        }
+
+        .status {
+            margin-top: 25px;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .status.landed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status.cancelled {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .status.active {
+            background-color: #e2f0ff;
+            color: #0c5460;
+        }
+
+        /* Call to Action Section */
+        .cta {
+            padding: 100px 20px;
+            text-align: center;
+            background-color: #007bff; /* Primary brand color */
+            color: #fff;
+        }
+        .cta h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        .cta .btn {
+            background-color: #fff;
+            color: #007bff;
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.5);
+        }
+        .cta .btn:hover {
+            background-color: #e6e6e6;
+            box-shadow: 0 10px 25px rgba(0, 123, 255, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: #343a40; /* Dark footer */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <h1 class="logo">GoFly <span>✈️</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="#features"><i class="fas fa-rocket"></i> Features</a></li>
+                    <li><a href="#planner"><i class="fas fa-plane-departure"></i> Planner</a></li>
+                    <li><a href="#cta"><i class="fas fa-paper-plane"></i> Get Started</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Unlock Seamless Flight Management</h2>
+            <p>Your intuitive platform for effortless flight planning and real-time updates.</p>
+            <a href="#planner" class="btn">Explore Flight Planner</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3><i class="fas fa-bolt"></i> Instant Planning</h3>
+                <p>Generate flight plans swiftly with intelligent suggestions and up-to-the-minute data.</p>
+            </div>
+            <div class="feature-item">
+                <h3><i class="fas fa-coins"></i> Transparent Cost Insights</h3>
+                <p>Access clear estimations for time, distance, and potential costs at your fingertips.</p>
+            </div>
+            <div class="feature-item">
+                <h3><i class="fas fa-user-astronaut"></i> Intuitive Interface</h3>
+                <p>Enjoy a clean and modern design crafted for a smooth and accessible user experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="planner" class="planner">
+        <h2>Plan Your Next Flight</h2>
+        <p>Enter your origin and destination to get started:</p>
+        <div class="form">
+            <input type="text" id="from" placeholder="From (e.g., Chandigarh)" />
+            <input type="text" id="to" placeholder="To (e.g., Delhi)" />
+            <button onclick="getDetails()">Find Flights</button>
+        </div>
+        <div class="results" id="results"></div>
+    </section>
+
+    <section class="cards-container" id="cardsContainer">
+        </section>
+
+    <section id="cta" class="cta">
+        <h2>Ready for Takeoff?</h2>
+        <p>Experience the future of flight management with GoFly. Sign up today!</p>
+        <a href="#" class="btn">Sign Up Now <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 GoFly. All rights reserved.</p>
+    </footer>
+
+    <script src="projkect3.js"></script>
+    
+</body>
+</html>

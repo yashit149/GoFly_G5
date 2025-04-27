@@ -2,47 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GoFly - Login</title>
+  <title>Login | GoFly</title>
   <link rel="stylesheet" href="login.css">
 </head>
 <body>
-  <header>
-    <div class="nav-container">
-      <div class="logo">GoFly</div>
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  
-  <div class="hero">
-    <div class="hero-content">
-      <h2>Welcome Back to GoFly</h2>
-      <p>Book your next adventure now!</p>
-    </div>
-  </div>
-
-  <div class="planner">
-    <h3>Login to Your Account</h3>
-    <form class="form">
-      <input type="text" placeholder="Username" required>
-      <input type="password" placeholder="Password" required>
+  <div class="auth-container">
+    <!-- Login Form -->
+    <form id="login-form" class="auth-form">
+      <div class="auth-header">
+        <h2>Sign In to GoFly</h2>
+        <p>Book and manage your flights with ease.</p>
+      </div>
+      <div>
+        <label for="login-username">Username</label>
+        <input id="login-username" name="username" type="text" required autocomplete="username">
+      </div>
+      <div>
+        <label for="login-password">Password</label>
+        <input id="login-password" name="password" type="password" required autocomplete="current-password">
+      </div>
       <button type="submit">Login</button>
+      <div class="auth-footer">
+        Don't have an account?
+        <a href="#" class="accent-link" id="show-signup">Sign up</a>
+      </div>
     </form>
-    <p>Don't have an account? <a href="#">Sign Up</a></p>
+    <!-- Signup Form -->
+    <form id="signup-form" class="auth-form hidden">
+      <div class="auth-header">
+        <h2>Create Your GoFly Account</h2>
+        <p>Sign up to book and manage your flights with ease.</p>
+      </div>
+      <div>
+        <label for="signup-username">Username</label>
+        <input id="signup-username" name="username" type="text" required autocomplete="username">
+      </div>
+      <div>
+        <label for="signup-email">Email</label>
+        <input id="signup-email" name="email" type="email" required autocomplete="email">
+      </div>
+      <div>
+        <label for="signup-password">Password</label>
+        <input id="signup-password" name="password" type="password" required autocomplete="new-password">
+      </div>
+      <div>
+        <label for="signup-confirm">Confirm Password</label>
+        <input id="signup-confirm" name="confirm" type="password" required autocomplete="new-password">
+      </div>
+      <button type="submit">Sign Up</button>
+      <div class="auth-footer">
+        Already have an account?
+        <a href="#" class="accent-link" id="show-login">Sign in</a>
+      </div>
+    </form>
   </div>
-  
-  <footer>
-    <p>© 2025 GoFly - All Rights Reserved</p>
-    <ul class="booking-links">
-      <li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Terms of Service</a></li>
-    </ul>
-  </footer>
+  <script>
+    // Toggle forms
+    document.getElementById('show-signup').onclick = function(e) {
+      e.preventDefault();
+      document.getElementById('login-form').classList.add('hidden');
+      document.getElementById('signup-form').classList.remove('hidden');
+    };
+    document.getElementById('show-login').onclick = function(e) {
+      e.preventDefault();
+      document.getElementById('signup-form').classList.add('hidden');
+      document.getElementById('login-form').classList.remove('hidden');
+    };
+  </script>
 </body>
 </html>
+

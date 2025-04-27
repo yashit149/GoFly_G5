@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GoFly - Flight Management System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="nav-container">
+      <h1 class="logo">GoFly ✈️</h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#planner">Planner</a></li>
+          <li><a href="#cta">Get Started</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" role="banner">
+      <div class="hero-content">
+        <h2>Manage Flights with Ease</h2>
+        <p>Your all-in-one flight planning and management solution</p>
+        <a href="#planner" class="btn primary-btn">Start Planning</a>
+      </div>
+    </section>
+
+    <section id="features" class="features">
+      <h2>Why GoFly?</h2>
+      <div class="feature-grid">
+        <article class="feature-item">
+          <h3>Fast Planning</h3>
+          <p>Plan your flights in seconds with smart suggestions and real-time info.</p>
+        </article>
+        <article class="feature-item">
+          <h3>Cost Estimation</h3>
+          <p>Get accurate estimates for time, distance, and costs with one click.</p>
+        </article>
+        <article class="feature-item">
+          <h3>User-Friendly</h3>
+          <p>Clean, modern interface that’s intuitive and easy to use.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="planner" class="planner">
+      <h2>Flight Planner</h2>
+      <p>Enter your journey details below:</p>
+      <form class="form" onsubmit="event.preventDefault(); getDetails();">
+        <label for="from">From</label>
+        <input type="text" id="from" name="from" placeholder="E.g. Delhi" required />
+
+        <label for="to">To</label>
+        <input type="text" id="to" name="to" placeholder="E.g. Mumbai" required />
+
+        <button type="submit" class="btn secondary-btn">Check Details</button>
+      </form>
+      <div class="results" id="results" aria-live="polite"></div>
+    </section>
+
+    <section id="cta" class="cta">
+      <h2>Ready to Take Off?</h2>
+      <p>Start using GoFly today and streamline your flight planning experience.</p>
+      <a href="#planner" class="btn primary-btn">Get Started Now</a>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 GoFly. All rights reserved.</p>
+  </footer>
+
+  <script src="project4.js"></script>
+</body>
+</html>

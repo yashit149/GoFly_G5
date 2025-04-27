@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GoFly | Smart Flight Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .plane-path .plane {
+      position: absolute;
+      animation: flyAcross 15s linear infinite;
+    }
+    @keyframes flyAcross {
+      0% { left: -10%; top: 30%; }
+      100% { left: 110%; top: 10%; }
+    }
+    .hero-gradient {
+      background: linear-gradient(to right, #3b82f6, #10b981);
+    }
+    .text-gradient {
+      background: linear-gradient(to right, #3b82f6, #10b981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    input:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    }
+  </style>
+</head>
+<body class="relative bg-gray-50">
+
+  <!-- Animated planes -->
+  <div class="plane-path pointer-events-none">
+    <i class="plane fas fa-plane text-blue-400 transform -rotate-45 text-4xl"></i>
+    <i class="plane fas fa-plane text-green-400 transform rotate-12 text-3xl" style="animation-delay: 2s; animation-duration: 18s;"></i>
+    <i class="plane fas fa-plane text-blue-300 transform -rotate-12 text-2xl" style="animation-delay: 5s; animation-duration: 20s;"></i>
+  </div>
+
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-bold text-gradient">GoFly</h1>
+      <nav class="space-x-6">
+        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium transition">Home</a>
+        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium transition">Flights</a>
+        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium transition">Features</a>
+        <a href="#" class="text-gray-700 hover:text-blue-600 font-medium transition">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white py-20 text-center">
+    <div class="max-w-xl mx-auto px-4">
+      <h2 class="text-4xl font-bold mb-4">Smart Flight Management</h2>
+      <p class="text-lg mb-8">Estimate distance, time, and cost between two cities, and book flights instantly.</p>
+
+      <!-- Flight Form -->
+      <div class="bg-white p-6 rounded-lg shadow-md text-gray-800">
+        <div class="flex flex-col md:flex-row gap-4 mb-4">
+          <input id="from" type="text" placeholder="From (e.g., Delhi)" class="flex-1 border border-gray-300 rounded px-4 py-2" required />
+          <input id="to" type="text" placeholder="To (e.g., Mumbai)" class="flex-1 border border-gray-300 rounded px-4 py-2" required />
+        </div>
+        <button onclick="getDetails()" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Get Details</button>
+      </div>
+
+      <!-- Results -->
+      <div id="results" class="mt-8 text-left bg-white text-gray-800 p-6 rounded-lg shadow-md max-w-2xl mx-auto"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white mt-20 border-t py-6 text-center text-sm text-gray-500">
+    &copy; 2025 GoFly. All rights reserved.
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function getDetails() {
+      const fromInput = document.getElementById("from");
+      const toInput = document.getElementById("to");
+      const resultsDiv = document.getElementById("results");
+
+      const from = formatInput(fromInput.value);
+      const to = formatInput(toInput.value);
+
+      resultsDiv.innerHTML = "";
+
+      if (!from || !to) {
+        resultsDiv.innerHTML = `<p class="text-red-500 font-medium">⚠️ Please enter both origin and destination.</p>`;
+        return;
+      }
+
+      const distance = getRandomDistance(500, 3500); // in km
+      const speed = 800; // km/h
+      const costPerKm = 0.12;
+
+      const time = (distance / speed).toFixed(1);
+      const costUSD = distance * costPerKm;
+      const costINR = convertUSDToINR(costUSD);
+
+      const fromEncoded = encodeURIComponent(from);
+      const toEncoded = encodeURIComponent(to);
+
+      resultsDiv.innerHTML = `
+        <p><strong>From:</strong> ${from}</p>
+        <p><strong>To:</strong> ${to}</p>
+        <p><strong>Distance:</strong> ${distance} km</p>
+        <p><strong>Estimated Time:</strong> ${time} hours</p>
+        <p><strong>Estimated Cost:</strong> ${formatCurrency(costINR, 'INR')}</p>
+        <p class="mt-4 font-semibold">Book Now:</p>
+        <ul class="list-disc list-inside space-y-2 mt-2">
+          <li><a class="text-blue-600 hover:underline" href="https://www.makemytrip.com/flights/?itinerary=${fromEncoded}-${toEncoded}-1" target="_blank">MakeMyTrip</a></li>
+          <li><a class="text-blue-600 hover:underline" href="https://www.skyscanner.co.in/transport/flights/${fromEncoded}/${toEncoded}" target="_blank">Skyscanner</a></li>
+          <li><a class="text-blue-600 hover:underline" href="https://www.cleartrip.com/flights/results?from=${fromEncoded}&to=${toEncoded}" target="_blank">Cleartrip</a></li>
+          <li><a class="text-blue-600 hover:underline" href="https://www.expedia.co.in/Flights?trip=oneway&from=${fromEncoded}&to=${toEncoded}" target="_blank">Expedia</a></li>
+          <li><a class="text-blue-600 hover:underline" href="https://www.goibibo.com/flights/air-${fromEncoded}-${toEncoded}/" target="_blank">Goibibo</a></li>
+        </ul>
+      `;
+    }
+
+    function formatInput(input) {
+      return input.trim().replace(/\b\w/g, char => char.toUpperCase());
+    }
+
+    function getRandomDistance(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function convertUSDToINR(amount) {
+      const exchangeRate = 83; // 1 USD = 83 INR
+      return amount * exchangeRate;
+    }
+
+    function formatCurrency(amount, currency = 'INR') {
+      return new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: currency,
+      }).format(amount);
+    }
+  </script>
+</body>
+</html>

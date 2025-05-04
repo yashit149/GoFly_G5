@@ -10,6 +10,123 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
   <!-- CSS Styling -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #0b3d91;
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: default;
+            user-select: none;
+            color: #007bff; /* Modern blue logo color */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .logo span {
+            color: #6c757d; /* A softer accent color */
+        }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 20px;
+    }
+    .places-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #0b3d91;
+    }
+
+    .place {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .place img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .place-content {
+      padding: 20px;
+    }
+
+    .place-content h3 {
+      color: #0b3d91;
+      margin-bottom: 10px;
+    }
+
+    .place-content p {
+      color: #444;
+    }
+
+    @media (min-width: 768px) {
+      .place {
+        flex-direction: row;
+      }
+
+      .place img {
+        width: 40%;
+        height: auto;
+      }
+
+      .place-content {
+        width: 60%;
+      }
+    }
+  </style>
   
 </head>
 <body>

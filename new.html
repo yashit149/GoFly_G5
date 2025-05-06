@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <title>GoFly - Flight Management System</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+   <!-- Google Fonts -->
+   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+   
+   <style>
+     /* Reset & Base */
+     * {
+       box-sizing: border-box;
+       margin: 0;
+       padding: 0;
+     }
+     body {
+       font-family: 'Outfit', sans-serif;
+       background: linear-gradient(135deg, #6dd5fa, #2980b9);
+       color: #fff;
+       line-height: 1.6;
+       min-height: 100vh;
+       display: flex;
+       flex-direction: column;
+     }
+     a {
+       text-decoration: none;
+       color: inherit;
+       transition: color 0.3s ease;
+     }
+     a:hover {
+       color: #ffd700;
+     }
+ 
+     /* Header */
+     header {
+       background: rgba(0, 0, 0, 0.3);
+       padding: 20px 40px;
+       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+       position: sticky;
+       top: 0;
+       z-index: 100;
+     }
+     .nav-container {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       max-width: 1200px;
+       margin: 0 auto;
+     }
+     .logo {
+       font-size: 2rem;
+       font-weight: 700;
+       letter-spacing: 2px;
+       cursor: default;
+       user-select: none;
+       color: #ffd700;
+       text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+     }
+     nav ul {
+       list-style: none;
+       display: flex;
+       gap: 30px;
+     }
+     nav ul li a {
+       font-weight: 600;
+       font-size: 1rem;
+       padding: 8px 12px;
+       border-radius: 6px;
+       background-color: rgba(255, 255, 255, 0.15);
+       box-shadow: inset 0 0 5px rgba(255,255,255,0.2);
+       transition: background-color 0.3s ease;
+     }
+     nav ul li a:hover {
+       background-color: #ffd700;
+       color: #333;
+       box-shadow: none;
+     }
+ 
+     /* Hero Section */
+     .hero {
+       flex: 1;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       padding: 80px 20px;
+       text-align: center;
+       background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+       position: relative;
+       overflow: hidden;
+     }
+     .hero::before {
+       content: '';
+       position: absolute;
+       inset: 0;
+       background: rgba(0, 0, 0, 0.5);
+       z-index: 0;
+     }
+     .hero-content {
+       position: relative;
+       z-index: 1;
+       max-width: 700px;
+       color: #ffd700;
+       animation: fadeInUp 1s ease forwards;
+     }
+     .hero-content h2 {
+       font-size: 3rem;
+       font-weight: 700;
+       margin-bottom: 15px;
+       text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+     }
+     .hero-content p {
+       font-size: 1.25rem;
+       margin-bottom: 30px;
+       text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+     }
+     .btn {
+       background-color: #ffd700;
+       color: #333;
+       font-weight: 700;
+       padding: 12px 30px;
+       border-radius: 30px;
+       box-shadow: 0 5px 15px rgba(255, 215, 0, 0.6);
+       transition: background-color 0.3s ease, box-shadow 0.3s ease;
+       display: inline-block;
+       cursor: pointer;
+       user-select: none;
+     }
+     .btn:hover {
+       background-color: #e6c200;
+       box-shadow: 0 8px 20px rgba(230, 194, 0, 0.8);
+     }
+ 
+     /* Features Section */
+     .features {
+       background-color: #0a3d62;
+       padding: 60px 20px;
+       text-align: center;
+     }
+     .features h2 {
+       font-size: 2.5rem;
+       margin-bottom: 40px;
+       color: #ffd700;
+       text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+     }
+     .feature-grid {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+       gap: 30px;
+       max-width: 1000px;
+       margin: 0 auto;
+     }
+     .feature-item {
+       background: rgba(255, 255, 255, 0.1);
+       padding: 30px 25px;
+       border-radius: 15px;
+       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+       transition: transform 0.3s ease, box-shadow 0.3s ease;
+       cursor: default;
+     }
+     .feature-item:hover {
+       transform: translateY(-10px);
+       box-shadow: 0 15px 30px rgba(255, 215, 0, 0.6);
+       background: rgba(255, 255, 255, 0.15);
+     }
+     .feature-item h3 {
+       font-size: 1.5rem;
+       margin-bottom: 15px;
+       color: #ffd700;
+     }
+     .feature-item p {
+       font-size: 1rem;
+       color: #eee;
+     }
+ 
+     /* Planner Section */
+     .planner {
+       padding: 60px 20px;
+       background: linear-gradient(135deg, #2980b9, #6dd5fa);
+       text-align: center;
+       color: #fff;
+     }
+     .planner h2 {
+       font-size: 2.5rem;
+       margin-bottom: 15px;
+       text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+     }
+     .planner p {
+       font-size: 1.2rem;
+       margin-bottom: 30px;
+       max-width: 600px;
+       margin-left: auto;
+       margin-right: auto;
+       text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+     }
+     .form {
+       display: flex;
+       justify-content: center;
+       gap: 20px;
+       flex-wrap: wrap;
+       max-width: 700px;
+       margin: 0 auto 40px;
+     }
+     .form input[type="text"] {
+       padding: 12px 20px;
+       border-radius: 30px;
+       border: none;
+       width: 200px;
+       font-size: 1rem;
+       outline: none;
+       transition: box-shadow 0.3s ease;
+       box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.4);
+       color: #333;
+     }
+     .form input[type="text"]::placeholder {
+       color: #666;
+     }
+     .form input[type="text"]:focus {
+       box-shadow: 0 0 12px #ffd700;
+       background-color: #fff;
+     }
+     .form button {
+       background-color: #ffd700;
+       border: none;
+       padding: 12px 30px;
+       border-radius: 30px;
+       font-weight: 700;
+       cursor: pointer;
+       color: #333;
+       box-shadow: 0 5px 15px rgba(255, 215, 0, 0.6);
+       transition: background-color 0.3s ease, box-shadow 0.3s ease;
+       min-width: 140px;
+     }
+     .form button:hover {
+       background-color: #e6c200;
+       box-shadow: 0 8px 20px rgba(230, 194, 0, 0.8);
+     }
+     .results {
+       max-width: 700px;
+       margin: 0 auto;
+       background: rgba(255, 255, 255, 0.15);
+       padding: 20px 25px;
+       border-radius: 15px;
+       box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.3);
+       min-height: 80px;
+       font-size: 1.1rem;
+       color: #fff;
+       text-align: left;
+       white-space: pre-wrap;
+     }
+ 
+     /* Call to Action */
+     .cta {
+       background: #ffd700;
+       color: #333;
+       text-align: center;
+       padding: 60px 20px;
+     }
+     .cta h2 {
+       font-size: 2.8rem;
+       margin-bottom: 15px;
+       font-weight: 700;
+     }
+     .cta p {
+       font-size: 1.3rem;
+       margin-bottom: 30px;
+     }
+     .cta .btn {
+       background-color: #333;
+       color: #ffd700;
+       padding: 14px 40px;
+       font-weight: 700;
+       border-radius: 30px;
+       box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+       transition: background-color 0.3s ease, color 0.3s ease;
+     }
+     .cta .btn:hover {
+       background-color: #555;
+       color: #fff;
+     }
+ 
+     /* Footer */
+     footer {
+       background: #222;
+       color: #aaa;
+       text-align: center;
+       padding: 15px 10px;
+       font-size: 0.9rem;
+       user-select: none;
+     }
+ 
+     /* Animations */
+     @keyframes fadeInUp {
+       0% {
+         opacity: 0;
+         transform: translateY(20px);
+       }
+       100% {
+         opacity: 1;
+         transform: translateY(0);
+       }
+     }
+ 
+     /* Responsive */
+     @media (max-width: 600px) {
+       .form {
+         flex-direction: column;
+         gap: 15px;
+       }
+       .form input[type="text"] {
+         width: 100%;
+       }
+       nav ul {
+         gap: 15px;
+       }
+     }
+   </style>
+ </head>
+ <body>
+ 
+   <header>
+     <div class="nav-container">
+       <h1 class="logo">GoFly ✈️</h1>
+       <nav>
+         <ul>
+           <li><a href="#features">Features</a></li>
+           <li><a href="#planner">Planner</a></li>
+           <li><a href="#cta">Get Started</a></li>
+         </ul>
+       </nav>
+     </div>
+   </header>
+ 
+   <section class="hero">
+     <div class="hero-content">
+       <h2>Manage Flights with Ease</h2>
+       <p>Your all-in-one flight planning and management solution</p>
+       <a href="#planner" class="btn">Start Planning</a>
+     </div>
+   </section>
+ 
+   <section id="features" class="features">
+     <h2>Why GoFly?</h2>
+     <div class="feature-grid">
+       <div class="feature-item">
+         <h3>Fast Planning</h3>
+         <p>Plan your flights in seconds with smart suggestions and real-time info.</p>
+       </div>
+       <div class="feature-item">
+         <h3>Cost Estimation</h3>
+         <p>Get accurate estimates for time, distance, and costs with one click.</p>
+       </div>
+       <div class="feature-item">
+         <h3>User-Friendly</h3>
+         <p>Clean, modern interface that's easy for everyone to use.</p>
+       </div>
+     </div>
+   </section>
+ 
+   <section id="planner" class="planner">
+     <h2>Flight Planner</h2>
+     <p>Enter your journey details below:</p>
+     <div class="form">
+       <input type="text" id="from" placeholder="From (e.g. Delhi)" />
+       <input type="text" id="to" placeholder="To (e.g. Mumbai)" />
+       <button onclick="getDetails()">Check Details</button>
+     </div>
+     <div class="results" id="results"></div>
+   </section>
+ 
+   <section id="cta" class="cta">
+     <h2>Ready to Take Off?</h2>
+     <p>Start using GoFly today and streamline your flight planning.</p>
+     <a href="#" class="btn">Get Started Now</a>
+   </section>
+ 
+   <footer>
+     <p>&copy; 2025 GoFly. All rights reserved.</p>
+   </footer>
+ 
+   <script src="projkect3.js"></script>
+ </body>
+ </html>

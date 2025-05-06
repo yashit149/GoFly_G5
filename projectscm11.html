@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Go Fly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f9ff;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #bae6fd 0%, #7dd3fc 50%, #38bdf8 100%);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-plane-departure text-sky-500 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-sky-600">Go Fly</span>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="#" class="border-sky-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                    <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Flights</a>
+                    <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Destinations</a>
+                    <a href="#" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Deals</a>
+                    <a href="#" class="border-sky-500 text-sky-600 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About Us</a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <button class="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-all">Sign In</button>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">About Go Fly</h1>
+                <p class="text-xl text-sky-100 max-w-3xl mx-auto">We're revolutionizing the way you search for and book flights, making travel simpler, smarter, and more affordable.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Story -->
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-sky-600 font-semibold tracking-wide uppercase">Our Journey</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">How We Started</p>
+            </div>
+
+            <div class="mt-10">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
+                        <img src="https://images.unsplash.com/photo-1556388158-158ea5ccacbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Airport terminal" class="rounded-lg shadow-xl w-full h-auto">
+                    </div>
+                    <div class="md:w-1/2">
+                        <p class="text-lg text-gray-600 mb-4">Founded in 2018 by a team of travel enthusiasts and tech experts, Go Fly was born out of frustration with the existing flight search experience. We noticed that most platforms were cluttered, confusing, and didn't prioritize the user's needs.</p>
+                        <p class="text-lg text-gray-600 mb-4">Our mission was simple: create a flight search platform that puts travelers first. We wanted to build something intuitive, transparent, and genuinely helpful for people planning their journeys.</p>
+                        <p class="text-lg text-gray-600">Today, we serve millions of travelers each month, helping them find the best flights at the best prices with our innovative search technology and personalized recommendations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Values -->
+    <div class="py-16 bg-sky-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-sky-600 font-semibold tracking-wide uppercase">What We Believe</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Our Core Values</p>
+            </div>
+
+            <div class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Value 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover transition-all">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-sky-100 text-sky-600 mb-4">
+                        <i class="fas fa-heart text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Customer First</h3>
+                    <p class="text-gray-600">Every decision we make starts with how it will benefit our users. We're obsessed with creating the best possible experience for travelers.</p>
+                </div>
+
+                <!-- Value 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover transition-all">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-sky-100 text-sky-600 mb-4">
+                        <i class="fas fa-lightbulb text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Innovation</h3>
+                    <p class="text-gray-600">We constantly push boundaries to develop new ways to make flight search smarter, faster, and more personalized.</p>
+                </div>
+
+                <!-- Value 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover transition-all">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-sky-100 text-sky-600 mb-4">
+                        <i class="fas fa-hand-holding-usd text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Transparency</h3>
+                    <p class="text-gray-600">No hidden fees, no surprises. We believe in complete honesty about pricing and what you're getting with your flight.</p>
+                </div>
+
+                <!-- Value 4 -->
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover transition-all">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-sky-100 text-sky-600 mb-4">
+                        <i class="fas fa-globe-americas text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Global Perspective</h3>
+                    <p class="text-gray-600">We understand that travel connects people and cultures. Our platform reflects the diversity of our global community.</p>
+                </div>
+
+                <!-- Value 5 -->
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover transition-all">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-sky-100 text-sky-600 mb-4">
+                        <i class="fas fa-bolt text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Speed</h3>
+                    <p class="text-gray-600">In a world that moves fast, we ensure our technology delivers results instantly, saving you precious time.</p>
+                </div>
+
+                <!-- Value 6 -->
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover transition-all">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-md bg-sky-100 text-sky-600 mb-4">
+                        <i class="fas fa-hands-helping text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Support</h3>
+                    <p class="text-gray-600">Our customer support team is available 24/7 to assist with any questions or issues, because travel doesn't keep business hours.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-base text-sky-600 font-semibold tracking-wide uppercase">Meet The Team</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">The People Behind Go Fly</p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 lg:mx-auto">Our diverse team brings together expertise from travel, technology, and customer experience.</p>
+            </div>
+
+            <div class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+                <!-- Team Member 1 -->
+                <div class="text-center">
+                    <div class="h-40 w-40 rounded-full mx-auto mb-4 overflow-hidden border-4 border-sky-100">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson" class="h-full w-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900">Sarah Johnson</h3>
+                    <p class="text-sky-600">CEO & Founder</p>
+                    <p class="mt-2 text-gray-600">Former airline executive turned tech entrepreneur with a passion for simplifying travel.</p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <a href="#" class="text-sky-500 hover:text-sky-600"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-sky-500 hover:text-sky-600"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="text-center">
+                    <div class="h-40 w-40 rounded-full mx-auto mb-4 overflow-hidden border-4 border-sky-100">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="h-full w-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900">Michael Chen</h3>
+                    <p class="text-sky-600">CTO</p>
+                    <p class="mt-2 text-gray-600">Tech visionary who built our proprietary flight search algorithms from the ground up.</p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <a href="#" class="text-sky-500 hover:text-sky-600"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-sky-500 hover:text-sky-600"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="text-center">
+                    <div class="h-40 w-40 rounded-full mx-auto mb-4 overflow-hidden border-4 border-sky-100">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Priya Patel" class="h-full w-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900">Priya Patel</h3>
+                    <p class="text-sky-600">Head of Product</p>
+                    <p class="mt-2 text-gray-600">User experience expert focused on making every interaction with Go Fly delightful.</p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <a href="#" class="text-sky-500 hover:text-sky-600"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-sky-500 hover:text-sky-600"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="text-center">
+                    <div class="h-40 w-40 rounded-full mx-auto mb-4 overflow-hidden border-4 border-sky-100">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Rodriguez" class="h-full w-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900">David Rodriguez</h3>
+                    <p class="text-sky-600">Head of Partnerships</p>
+                    <p class="mt-2 text-gray-600">Builds relationships with airlines worldwide to bring our users exclusive deals.</p>
+                    <div class="mt-4 flex justify-center space-x-4">
+                        <a href="#" class="text-sky-500 hover:text-sky-600"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-sky-500 hover:text-sky-600"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="bg-sky-600 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                <!-- Stat 1 -->
+                <div class="text-center text-white">
+                    <div class="text-4xl font-bold mb-2">5M+</div>
+                    <div class="text-sky-100">Happy Travelers</div>
+                </div>
+                
+                <!-- Stat 2 -->
+                <div class="text-center text-white">
+                    <div class="text-4xl font-bold mb-2">300+</div>
+                    <div class="text-sky-100">Airlines Partnered</div>
+                </div>
+                
+                <!-- Stat 3 -->
+                <div class="text-center text-white">
+                    <div class="text-4xl font-bold mb-2">24/7</div>
+                    <div class="text-sky-100">Customer Support</div>
+                </div>
+                
+                <!-- Stat 4 -->
+                <div class="text-center text-white">
+                    <div class="text-4xl font-bold mb-2">95%</div>
+                    <div class="text-sky-100">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Ready to Start Your Journey?</h2>
+            <p class="mt-4 text-xl text-gray-600">Join millions of travelers who trust Go Fly to find their perfect flight.</p>
+            <div class="mt-8 flex justify-center">
+                <div class="inline-flex rounded-md shadow">
+                    <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-sky-600 hover:bg-sky-700 transition-all">
+                        Search Flights
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="ml-3 inline-flex">
+                    <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-sky-700 bg-sky-100 hover:bg-sky-200 transition-all">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Column 1 -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Company</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-all">About</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-all">Careers</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-all">Press</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-all">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 2 -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Support</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-all">Help Center</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-all">Contact Us</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-all">Privacy Policy</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-all">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Resources</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-all">Travel Guides</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-all">Airline Fees</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-all">Baggage Rules</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-all">Visa Info</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Connect</h3>
+                    <div class="mt-4 flex space-x-6">
+                        <a href="#" class="text-gray-500 hover:text-sky-500 transition-all">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-sky-500 transition-all">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-sky-500 transition-all">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-sky-500 transition-all">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="text-sm font-medium text-gray-500">Subscribe to our newsletter</h4>
+                        <div class="mt-2 flex">
+                            <input type="email" placeholder="Your email" class="px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-sky-500 focus:border-sky-500 flex-1">
+                            <button class="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-r-md transition-all">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-plane-departure text-sky-500 text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-sky-600">Go Fly</span>
+                </div>
+                <p class="mt-4 md:mt-0 text-base text-gray-500">&copy; 2023 Go Fly, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('button[aria-controls="mobile-menu"]');
+            // In a real implementation, you would add functionality to show/hide mobile menu
+            mobileMenuButton.addEventListener('click', function() {
+                alert("Mobile menu would open here in a full implementation");
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Information - Go Fly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f6f8; /* Lighter background */
+            color: #374151; /* Darker, more readable text */
+            line-height: 1.6;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 50%, #34d399 100%); /* Softer, inviting green gradient */
+        }
+
+        nav {
+            background-color: white;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+        }
+
+        nav a:hover {
+            color: #34d399; /* Vibrant hover color */
+        }
+
+        .flight-card {
+            border-radius: 0.75rem; /* More pronounced rounded corners */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.02); /* Subtle shadow */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .flight-card:hover {
+            transform: translateY(-0.25rem);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Enhanced hover effect */
+        }
+
+        .filter-chip {
+            background-color: #e0f2f7; /* Light teal for better contrast */
+            color: #06b6d4; /* Vibrant teal text */
+            border-radius: 1.5rem; /* More rounded chips */
+            padding: 0.5rem 1rem;
+            font-weight: 600; /* Semi-bold for emphasis */
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        .filter-chip:hover {
+            background-color: #06b6d4;
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: #0ea5e9; /* Brighter, more energetic blue */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0284c7;
+        }
+
+        .link {
+            color: #0ea5e9;
+            font-weight: 600;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .link:hover {
+            color: #0284c7;
+        }
+
+        footer a:hover {
+            color: #0ea5e9;
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+    <nav class="bg-white shadow-md sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-plane-departure text-sky-500 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-sky-600">Go Fly</span>
+                    </a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Home</a>
+                    <a href="#" class="border-sky-500 text-sky-600 px-3 py-2 rounded-md text-sm font-medium font-semibold border-b-2">Flights</a>
+                    <a href="#" class="text-gray-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Destinations</a>
+                    <a href="#" class="text-gray-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">Articles</a>
+                    <a href="#" class="text-gray-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">About Us</a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex items-center">
+                    <button class="btn-primary">Sign In</button>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-gradient py-24 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-8">Discover Your Next Journey</h1>
+            <p class="text-xl text-sky-100 max-w-3xl mx-auto">Explore a world of flight options and find the perfect trip for your adventure.</p>
+        </div>
+    </div>
+
+    <div class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+                <button class="filter-chip active bg-sky-100 text-sky-600">All Flights</button>
+                <button class="filter-chip">Economy</button>
+                <button class="filter-chip">Business</button>
+                <button class="filter-chip">First Class</button>
+                <button class="filter-chip">Non-Stop</button>
+                <button class="filter-chip">Flexible Dates</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-10">
+                <h2 class="text-base text-sky-600 font-semibold tracking-wide uppercase">Don't Miss Out</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Featured Flight Deal</p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden flight-card">
+                <div class="md:flex">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1515859006895-8e32ed62f4de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Airplane interior" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8 md:w-1/2">
+                        <div class="uppercase tracking-wide text-sm text-sky-600 font-semibold mb-2">Business Class</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Fly from New York (JFK) to London (LHR)</h3>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-plane-departure text-sky-500 mr-2"></i>
+                            <p class="text-gray-700">Non-Stop with Emirates • 7h 25m</p>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-calendar-alt text-sky-500 mr-2"></i>
+                            <p class="text-gray-700">Departure: May 15, 2025 • Return: May 22, 2025</p>
+                        </div>
+                        <div class="flex items-center mb-6">
+                            <i class="fas fa-tag text-green-500 mr-2"></i>
+                            <p class="text-2xl font-bold text-gray-900">$2,399 <span class="text-sm font-normal text-gray-500">round-trip</span></p>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="btn-primary inline-flex items-center">
+                                Book Your Flight
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-10">
+                <h2 class="text-base text-sky-600 font-semibold tracking-wide uppercase">Explore More Options</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Popular Flight Routes</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flight-card">
+                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Los Angeles skyline" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="filter-chip bg-sky-100 text-sky-600">Economy</span>
+                            <span class="text-gray-500 text-sm ml-auto">from $299</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">San Francisco (SFO) to Los Angeles (LAX)</h3>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-plane-departure text-sky-500 mr-2"></i>
+                            <p class="text-gray-700">Non-Stop • United • 1h 30m</p>
+                        </div>
+                        <a href="#" class="link inline-flex items-center">
+                            View Details
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flight-card">
+                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac514?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Tokyo city" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="filter-chip bg-sky-100 text-sky-600">Economy</span>
+                            <span class="text-gray-500 text-sm ml-auto">from $899</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Los Angeles (LAX) to Tokyo (NRT)</h3>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-plane-departure text-sky-500 mr-2"></i>
+                            <p class="text-gray-700">1 Stop • ANA • 14h 45m</p>
+                        </div>
+                        <a href="#" class="link inline-flex items-center">
+                            View Details
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flight-card">
+                    <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62f116?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Paris city" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="filter-chip bg-sky-100 text-sky-600">Business</span>
+                            <span class="text-gray-500 text-sm ml-auto">from $2,799</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Chicago (ORD) to Paris (CDG)</h3>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-plane-departure text-sky-500 mr-2"></i>
+                            <p class="text-gray-700">Non-Stop • Air France • 8h 15m</p>
+                        </div>
+                        <a href="#" class="link inline-flex items-center">
+                            View Details
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flight-card">
+                    <img src="https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Miami beach" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="filter-chip bg-sky-100 text-sky-600">Economy</span>
+                            <span class="text-gray-500 text-sm ml-auto">from $199</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Atlanta (ATL to Miami (MIA))</h3>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-plane-departure text-sky-500 mr-2"></i>
+                            <p class="text-gray-700">Non-Stop • Delta • 2h 10m</p>
+                        </div>
+                        <a href="#" class="link inline-flex items-center">
+                            View Details
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flight-card">
+                    <img src="https://images.unsplash.com/photo-1514923995763-768e52f5af87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Sydney opera house" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="filter-chip bg-sky-100 text-sky-600">First Class</span>
+                            <span class="text-gray-500 text-sm ml-auto">from $4,999</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Los Angeles (LAX) to Sydney (SYD)</h3>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-plane-departure text-sky-500 mr-2"></i>
+                            <p class="text-gray-700">Non-Stop • Qantas • 15h 30m</p>
+                        </div>
+                        <a href="#" class="link inline-flex items-center">
+                            View Details
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flight-card">
+                    <img src="https://images.unsplash.com/photo-1544198365-456de16a33a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Dubai skyline" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="filter-chip bg-sky-100 text-sky-600">Business</span>
+                            <span class="text-gray-500 text-sm ml-auto">from $3,199</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">New York (JFK) to Dubai (DXB)</h3>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-plane-departure text-sky-500 mr-2"></i>
+                            <p class="text-gray-700">Non-Stop • Emirates • 12h 45m</p>
+                        </div>
+                        <a href="#" class="link inline-flex items-center">
+                            View Details
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <button class="btn-primary">
+                    Load More Flights
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-sky-600 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Unlock Exclusive Flight Deals</h2>
+            <p class="text-sky-100 mb-8 max-w-2xl mx-auto">Subscribe to our newsletter and be the first to know about our special offers and promotions.</p>
+            <div class="max-w-md mx-auto flex rounded-md shadow-md">
+                <input type="email" placeholder="Your email address" class="flex-1 appearance-none border border-transparent w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-l-md">
+                <button class="bg-sky-800 hover:bg-sky-900 text-white px-6 py-3 rounded-r-md font-semibold transition-colors duration-200">
+                    Subscribe
+                </button>
+            </div>
+            <p class="text-sky-100 text-sm mt-3 opacity-70">We care about your privacy and will never share your information.</p>
+        </div>
+    </div>
+
+    <footer class="bg-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Company</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-colors duration-200">About Us</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-colors duration-200">Careers</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-colors duration-200">Press</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-colors duration-200">Our Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Support</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-colors duration-200">Help Center</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-colors duration-200">Contact Us</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-colors duration-200">Privacy Policy</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-colors duration-200">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Resources</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-colors duration-200">Travel Guides</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-colors duration-200">Airline Fees</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-colors duration-200">Baggage Rules</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-sky-600 transition-colors duration-200">Visa Information</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Connect</h3>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-500 hover:text-sky-500 transition-colors duration-200"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-sky-500 transition-colors duration-200"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-sky-500 transition-colors duration-200"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-sky-500 transition-colors duration-200"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="text-sm font-medium text-gray-500">Download Our App</h4>
+                        <div class="mt-2 flex flex-col space-y-2">
+                            <a href="#" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm flex items-center justify-center hover:bg-gray-700 transition-colors duration-200">
+                                <i class="fab fa-apple mr-2"></i>
+                                App Store
+                            </a>
+                            <a href="#" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm flex items-center justify-center hover:bg-gray-700 transition-colors duration-200">
+                                <i class="fab fa-google-play mr-2"></i>
+                                Google Play
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-plane-departure text-sky-500 text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-sky-600">Go Fly</span>
+                </div>
+                <p class="mt-4 md:mt-0 text-base text-gray-500">&copy; 2025 Go Fly, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('button[aria-controls="mobile-menu"]');
+            mobileMenuButton.addEventListener('click', function() {
+                alert("Mobile menu would open here in a full implementation");
+            });
+
+            const filterChips = document.querySelectorAll('.filter-chip');
+            filterChips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    filterChips.forEach(c => c.classList.remove('bg-sky-600', 'text-white', 'active'));
+                    this.classList.add('bg-sky-600', 'text-white', 'active');
+                    alert("Flights would be filtered by category in a full implementation");
+                });
+            });
+
+            if (filterChips.length > 0) {
+                filterChips[0].classList.add('bg-sky-600', 'text-white', 'active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Insights & Journeys - Go Fly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap');
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: #f4f6f8;
+            color: #374151; /* Darker, more readable text */
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 50%, #34d399 100%); /* Softer, inviting green gradient */
+        }
+
+        .article-card {
+            border-radius: 0.75rem; /* More pronounced rounded corners */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.02); /* Subtle, modern shadow */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .article-card:hover {
+            transform: translateY(-0.25rem);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Enhanced hover effect */
+        }
+
+        .category-chip {
+            background-color: #e0f2f7; /* Light teal for better contrast */
+            color: #06b6d4; /* Vibrant teal text */
+            border-radius: 1.5rem; /* More rounded chips */
+            padding: 0.5rem 1rem;
+            font-weight: 600; /* Semi-bold for emphasis */
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+
+        .category-chip:hover {
+            background-color: #06b6d4;
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: #0ea5e9; /* Brighter, more energetic blue */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0284c7;
+        }
+
+        .link {
+            color: #0ea5e9;
+            font-weight: 600;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .link:hover {
+            color: #0284c7;
+        }
+
+        footer a:hover {
+            color: #0ea5e9;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-700">
+    <nav class="bg-white shadow-md sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-paper-plane text-emerald-500 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-emerald-600">Go Fly</span>
+                    </a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Flights</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">Destinations</a>
+                    <a href="#" class="text-emerald-600 px-3 py-2 rounded-md text-sm font-medium font-semibold border-b-2 border-emerald-500">Articles</a>
+                    <a href="#" class="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md text-sm font-medium">About Us</a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex items-center">
+                    <button class="btn-primary">Sign In</button>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-emerald-500" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero py-24 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">Unlock Your Wanderlust with Inspiring Travel Stories</h1>
+            <p class="text-lg md:text-xl text-white opacity-80 max-w-3xl mx-auto">Dive into a world of travel guides, insightful articles, and expert tips to fuel your next adventure.</p>
+        </div>
+    </div>
+
+    <div class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+                <button class="category-chip active bg-emerald-100 text-emerald-600">All Articles</button>
+                <button class="category-chip">Destination Guides</button>
+                <button class="category-chip">Travel Tips</button>
+                <button class="category-chip">Budget Adventures</button>
+                <button class="category-chip">Family Escapes</button>
+                <button class="category-chip">Luxury Getaways</button>
+                <button class="category-chip">Adventure Travel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-10">
+                <h2 class="text-base text-emerald-600 font-semibold tracking-wide uppercase">Curated Just For You</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Our Top Pick</p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden article-card">
+                <div class="md:flex">
+                    <div class="md:w-1/2">
+                        <img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Santorini sunset" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8 md:w-1/2">
+                        <div class="uppercase tracking-wide text-sm text-emerald-600 font-semibold mb-2">Destination Spotlight</div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Santorini Unveiled: Beyond the Iconic Views</h3>
+                        <p class="text-gray-700 mb-4">Explore the hidden charm of Santorini, from its black sand beaches and ancient ruins to the local vineyards and authentic cuisine. Discover a side of this Cycladic gem that goes beyond the picture-perfect sunsets.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img class="h-10 w-10 rounded-full mr-3" src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sophia Martinez">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-900">Sophia Martinez</p>
+                                    <p class="text-sm text-gray-500">Wanderlust Writer</p>
+                                </div>
+                            </div>
+                            <span class="text-sm text-gray-500">7 min read</span>
+                        </div>
+                        <div class="mt-6">
+                            <a href="#" class="link inline-flex items-center">
+                                Read the full story
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-10">
+                <h2 class="text-base text-emerald-600 font-semibold tracking-wide uppercase">More to Explore</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Latest Articles</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden article-card">
+                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Packing luggage" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="category-chip bg-emerald-100 text-emerald-600">Travel Hacks</span>
+                            <span class="text-gray-500 text-sm ml-auto">May 15, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Pack Smarter, Travel Easier: Essential Tips</h3>
+                        <p class="text-gray-700 mb-4">Maximize your luggage space and minimize stress with these expert packing strategies.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img class="h-8 w-8 rounded-full mr-2" src="https://randomuser.me/api/portraits/men/46.jpg" alt="James Wilson">
+                                <p class="text-sm font-medium text-gray-900">James Wilson</p>
+                            </div>
+                            <a href="#" class="link text-sm">Read more</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden article-card">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Bali rice fields" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="category-chip bg-emerald-100 text-emerald-600">Island Life</span>
+                            <span class="text-gray-500 text-sm ml-auto">June 02, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Discovering the Soul of Bali on a Budget</h3>
+                        <p class="text-gray-700 mb-4">Experience the magic of Bali without breaking the bank. Find hidden gems and local experiences.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img class="h-8 w-8 rounded-full mr-2" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Lisa Nguyen">
+                                <p class="text-sm font-medium text-gray-900">Lisa Nguyen</p>
+                            </div>
+                            <a href="#" class="link text-sm">Read more</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden article-card">
+                    <img src="https://images.unsplash.com/photo-1539635278303-d4002c539e37?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Family at airport" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="category-chip bg-emerald-100 text-emerald-600">Family Adventures</span>
+                            <span class="text-gray-500 text-sm ml-auto">June 10, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Making Memories: Tips for Smooth Family Flights</h3>
+                        <p class="text-gray-700 mb-4">Navigate air travel with kids like a pro. From entertainment to essentials, we've got you covered.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img class="h-8 w-8 rounded-full mr-2" src="https://randomuser.me/api/portraits/women/54.jpg" alt="Emma Johnson">
+                                <p class="text-sm font-medium text-gray-900">Emma Johnson</p>
+                            </div>
+                            <a href="#" class="link text-sm">Read more</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden article-card">
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Train travel" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="category-chip bg-emerald-100 text-emerald-600">Eco-Friendly</span>
+                            <span class="text-gray-500 text-sm ml-auto">June 18, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Traveling Responsibly: Reducing Your Environmental Impact</h3>
+                        <p class="text-gray-700 mb-4">Make your journeys greener with these practical tips for sustainable travel.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img class="h-8 w-8 rounded-full mr-2" src="https://randomuser.me/api/portraits/men/29.jpg" alt="David Chen">
+                                <p class="text-sm font-medium text-gray-900">David Chen</p>
+                            </div>
+                            <a href="#" class="link text-sm">Read more</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden article-card">
+                    <img src="https://images.unsplash.com/photo-1498307833015-e7b400441eb8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Tokyo street" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="category-chip bg-emerald-100 text-emerald-600">City Escapes</span>
+                            <span class="text-gray-500 text-sm ml-auto">June 22, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Tokyo's Hidden Alleys: A Local's Guide to the Metropolis</h3>
+                        <p class="text-gray-700 mb-4">Venture beyond the tourist hotspots and discover the authentic charm of Tokyo's backstreets.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img class="h-8 w-8 rounded-full mr-2" src="https://randomuser.me/api/portraits/women/76.jpg" alt="Yuki Tanaka">
+                                <p class="text-sm font-medium text-gray-900">Yuki Tanaka</p>
+                            </div>
+                            <a href="#" class="link text-sm">Read more</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden article-card">
+                    <img src="https://images.unsplash.com/photo-1501555088652-021faa4b35b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" alt="Luxury resort" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="category-chip bg-emerald-100 text-emerald-600">Luxury Travel</span>
+                            <span class="text-gray-500 text-sm ml-auto">June 28, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Indulge in Paradise: Exclusive Island Resorts for Ultimate Relaxation</h3>
+                        <p class="text-gray-700 mb-4">Escape to the world's most luxurious private island retreats and experience unparalleled pampering.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img class="h-8 w-8 rounded-full mr-2" src="https://randomuser.me/api/portraits/men/63.jpg" alt="Robert James">
+                                <p class="text-sm font-medium text-gray-900">Robert James</p>
+                            </div>
+                            <a href="#" class="link text-sm">Read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <button class="btn-primary">
+                    Load More Articles
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-emerald-600 py-16 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">Stay Inspired: Subscribe to Our Newsletter</h2>
+            <p class="text-emerald-100 mb-8 max-w-2xl mx-auto">Get the latest travel guides, exclusive offers, and insider tips delivered straight to your inbox.</p>
+            <div class="max-w-md mx-auto flex rounded-md shadow-md">
+                <input type="email" placeholder="Your email address" class="flex-1 appearance-none border border-transparent w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline rounded-l-md">
+                <button class="bg-emerald-800 hover:bg-emerald-900 text-white px-6 py-3 rounded-r-md font-semibold transition-colors duration-200">
+                    Subscribe
+                </button>
+            </div>
+            <p class="text-emerald-100 text-sm mt-3 opacity-70">We value your privacy and will never share your email.</p>
+        </div>
+    </div>
+
+    <footer class="bg-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Company</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-base text-gray-600 hover:text-emerald-600 transition-colors duration-200">About Us</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-emerald-600 transition-colors duration-200">Careers</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-emerald-600 transition-colors duration-200">Press</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-emerald-600 transition-colors duration-200">Our Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Support</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-base text-gray-600 hover:text-emerald-600 transition-colors duration-200">Help Center</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-emerald-600 transition-colors duration-200">Contact Us</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-emerald-600 transition-colors duration-200">Privacy Policy</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-emerald-600 transition-colors duration-200">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Resources</h3>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-base text-gray-600 hover:text-emerald-600 transition-colors duration-200">Travel Guides</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-emerald-600 transition-colors duration-200">Airline Fees</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-emerald-600 transition-colors duration-200">Baggage Rules</a></li>
+                        <li><a href="#" class="text-base text-gray-600 hover:text-emerald-600 transition-colors duration-200">Visa Information</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Connect</h3>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-500 hover:text-emerald-500 transition-colors duration-200"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-emerald-500 transition-colors duration-200"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-emerald-500 transition-colors duration-200"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-500 hover:text-emerald-500 transition-colors duration-200"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="text-sm font-medium text-gray-500">Download Our App</h4>
+                        <div class="mt-2 flex flex-col space-y-2">
+                            <a href="#" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm flex items-center justify-center hover:bg-gray-700 transition-colors duration-200">
+                                <i class="fab fa-apple mr-2"></i>
+                                App Store
+                            </a>
+                            <a href="#" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm flex items-center justify-center hover:bg-gray-700 transition-colors duration-200">
+                                <i class="fab fa-google-play mr-2"></i>
+                                Google Play
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center">
+                    <i class="fas fa-paper-plane text-emerald-500 text-2xl mr-2"></i>
+                    <span class="text-xl font-bold text-emerald-600">Go Fly</span>
+                </div>
+                <p class="mt-4 md:mt-0 text-base text-gray-500">&copy; 2025 Go Fly, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('button[aria-controls="mobile-menu"]');
+            mobileMenuButton.addEventListener('click', function() {
+                alert("Mobile menu would open here in a full implementation");
+            });
+
+            const categoryChips = document.querySelectorAll('.category-chip');
+            categoryChips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    categoryChips.forEach(c => c.classList.remove('bg-emerald-600', 'text-white', 'active'));
+                    this.classList.add('bg-emerald-600', 'text-white', 'active');
+                    alert("Articles would be filtered by category in a full implementation");
+                });
+            });
+
+            if (categoryChips.length > 0) {
+                categoryChips[0].classList.add('bg-emerald-600', 'text-white', 'active');
+            }
+        });
+    </script>
+</body>
+</html>
